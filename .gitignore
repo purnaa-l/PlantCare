@@ -1,0 +1,100 @@
+###############
+# BUILD OUTPUT
+###############
+bin/
+obj/
+out/
+Build/
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
+artifacts/
+
+#####################
+# AVALONIA SPECIFIC
+#####################
+*.axaml.cs~        # temp XAML backups
+*.axa~             # Avalonia preview temp
+*.avalonia.*       # Avalonia intermediate cache
+
+###################
+# USER SECRETS
+###################
+*.user
+*.userprefs
+*.suo
+
+########################
+# DOTNET / NUGET CACHE
+########################
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+nuget.exe
+*.ncrunchproject
+*.ncrunchsolution
+
+# ASP.NET / dotnet dev certs (if ever used)
+dotnet-dev-certs.json
+
+##########################
+# VISUAL STUDIO / RIDER
+##########################
+
+# VS files
+.vs/
+*.vscode/
+*.vsidx
+*.VC.db
+*.VC.VC.opendb
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code settings
+.vscode/
+
+##########################
+# LOGS + TEMP FILES
+##########################
+*.log
+*.tlog
+*.tmp
+*.temp
+*.cache
+
+# macOS
+.DS_Store
+
+# Windows Explorer
+Thumbs.db
+ehthumbs.db
+
+##########################
+# OS + TOOLING
+##########################
+.env
+*.swp
+*.lock
+
+##########################
+# REPL / INTERACTIVE
+##########################
+.history
+
+##########################
+# TEST RESULTS
+##########################
+TestResult*/
+TestResults/
+*.coverage
+*.coveragexml
+
+##########################
+# MISC
+##########################
+*.bak
+*.orig
+*~

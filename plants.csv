@@ -1,0 +1,12 @@
+Id,Name,Species,Location,WaterIntervalDays,FertilizingIntervalDays,LastWatered,LastFertilized
+6a0e3a47-4a50-4c4c-9e3b-89f510000001,"Snake Plant","Sansevieria","Bedroom window",7,30,2025-12-01,2025-12-01
+9fc1cd65-81fe-41b3-be78-fdc7610b705d,"Mimosa","mimi","ss",3,1,2025-12-05,2025-12-05
+"2025-12-05 14:01:03",6a0e3a47-4a50-4c4c-9e3b-89f510000001,"Snake Plant","Sansevieria","Bedroom window",7,30,2025-12-01,2025-12-01
+"2025-12-05 14:01:03",9739b44b-2652-4378-98a9-06c6dc9b78f6,"Mimosa","Mimosa New","Bedroom Window",2,3,2025-12-05,2025-12-05
+"2025-12-05 23:57:09",6a0e3a47-4a50-4c4c-9e3b-89f510000001,"Snake Plant","Sansevieria","Bedroom window",7,30,2025-12-01,2025-12-01
+"2025-12-05 23:57:09",9739b44b-2652-4378-98a9-06c6dc9b78f6,"Mimosa","Mimosa New","Bedroom Window",2,3,2025-12-05,2025-12-05
+"2025-12-06 00:10:19",6a0e3a47-4a50-4c4c-9e3b-89f510000001,"Snake Plant","Sansevieria","Bedroom window",7,30,2025-12-01,2025-12-01
+"2025-12-06 00:10:19",3d8a9fe6-ec5c-484a-887f-d57313392689,"Mimosa","Mimosa New","Bedroom Window",2,1,2025-12-06,2025-12-06
+"2025-12-06 09:51:41",6a0e3a47-4a50-4c4c-9e3b-89f510000001,"Snake Plant","Sansevieria","Bedroom window",7,30,2025-12-01,2025-12-01
+"2025-12-06 09:51:41",3d8a9fe6-ec5c-484a-887f-d57313392689,"Mimosa","Mimosa New","Bedroom Window",2,1,2025-12-06,2025-12-06
+"2025-12-06 09:51:41",428f486b-0bf5-4cbd-9760-00ad1ee75fa2,"xxx","xxx","www",2,4,2025-12-06,2025-12-06

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PlantCare.MainWindow"
+        Width="1100" Height="650"
+        Title="PlantCare - Smart Indoor Plant Monitoring"
+        Background="#F4F7F2">
+
+  <Window.Resources>
+    <SolidColorBrush x:Key="BgMain" Color="#F4F7F2"/>
+    <SolidColorBrush x:Key="PanelBorder" Color="#A5D6A7"/>
+    <SolidColorBrush x:Key="AccentGreen" Color="#2E7D32"/>
+    <SolidColorBrush x:Key="AccentBlue" Color="#1565C0"/>
+    <SolidColorBrush x:Key="AccentRed" Color="#BF3B3B"/>
+
+    <!-- extra brushes for nicer look -->
+    <SolidColorBrush x:Key="CardBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#222222"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#607D8B"/>
+    <SolidColorBrush x:Key="TextMuted" Color="#90A4AE"/>
+  </Window.Resources>
+
+    <Window.Styles>
+    <!-- BUTTONS: no hover color change, keep your Background/Foreground -->
+    <Style Selector="Button">
+      <!-- Keep buttons a reasonable size -->
+      <Setter Property="Padding" Value="10,6"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+      <Setter Property="Template">
+        <ControlTemplate TargetType="Button">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{TemplateBinding CornerRadius}">
+            <ContentPresenter
+                Content="{TemplateBinding Content}"
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                Margin="{TemplateBinding Padding}"
+                TextElement.Foreground="{TemplateBinding Foreground}"/>
+          </Border>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+ <Style Selector="TextBox">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+<Style Selector="TextBox:pointerover">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+
+<Style Selector="DatePicker">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+<Style Selector="DatePicker:pointerover">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+
+<Style Selector="CalendarDatePicker">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+<Style Selector="CalendarDatePicker:pointerover">
+  <Setter Property="Background" Value="#607D8B"/>
+</Style>
+
+  </Window.Styles>
+
+
+  <Grid ColumnDefinitions="260,*,320"
+        Background="{StaticResource BgMain}"
+        Margin="10">
+
+    <!-- Left: Plant list -->
+    <Border Grid.Column="0"
+            Background="{StaticResource CardBackground}"
+            CornerRadius="10"
+            BorderBrush="{StaticResource PanelBorder}"
+            BorderThickness="1"
+            Padding="10"
+            Margin="0,0,10,0">
+      <StackPanel>
+        <TextBlock Text="Plants"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource TextPrimary}"
+                   Margin="0,0,0,4"/>
+        <TextBlock Text="Select a plant to view and edit."
+                   FontSize="12"
+                   Foreground="{StaticResource TextSecondary}"
+                   Margin="0,0,0,10"/>
+
+        <ListBox x:Name="PlantList"
+                 Height="500"
+                 BorderThickness="0"
+                 Background="#E8F5E9"
+                 Foreground="{StaticResource TextPrimary}"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    Spacing="10">
+          <!-- BUTTONS UNCHANGED -->
+          <Button x:Name="NewPlantButton"
+                  Content="New"
+                  Width="70"
+                  Background="{StaticResource AccentBlue}"
+                  Foreground="White"
+                  CornerRadius="6"/>
+          <Button x:Name="SavePlantButton"
+                  Content="Save"
+                  Width="70"
+                  Background="{StaticResource AccentGreen}"
+                  Foreground="White"
+                  CornerRadius="6"/>
+          <Button x:Name="DeletePlantButton"
+                  Content="Delete"
+                  Width="70"
+                  Background="{StaticResource AccentRed}"
+                  Foreground="White"
+                  CornerRadius="6"/>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <!-- Center: Details -->
+    <Border Grid.Column="1"
+            Background="{StaticResource CardBackground}"
+            CornerRadius="10"
+            BorderBrush="#90CAF9"
+            BorderThickness="1"
+            Padding="10"
+            Margin="0,0,10,0">
+      <ScrollViewer>
+        <StackPanel>
+          <TextBlock Text="Plant Details"
+                     FontSize="20"
+                     FontWeight="Bold"
+                     Foreground="{StaticResource TextPrimary}"
+                     Margin="0,0,0,4"/>
+          <TextBlock Text="Update care schedule and location for your indoor plants."
+                     FontSize="12"
+                     Foreground="{StaticResource TextSecondary}"
+                     Margin="0,0,0,10"/>
+
+          <Grid ColumnDefinitions="140,*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                Margin="0,0,0,10">
+            <TextBlock Text="Name:"
+                       Grid.Row="0" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <TextBox x:Name="NameTextBox"
+                     Grid.Row="0" Grid.Column="1"/>
+
+            <TextBlock Text="Species:"
+                       Grid.Row="1" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <TextBox x:Name="SpeciesTextBox"
+                     Grid.Row="1" Grid.Column="1"/>
+
+            <TextBlock Text="Location:"
+                       Grid.Row="2" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <TextBox x:Name="LocationTextBox"
+                     Grid.Row="2" Grid.Column="1"/>
+
+            <TextBlock Text="Water interval (days):"
+                       Grid.Row="3" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <TextBox x:Name="WaterDaysTextBox"
+                     Grid.Row="3" Grid.Column="1"
+                     Width="80"/>
+
+            <TextBlock Text="Fertilize interval (days):"
+                       Grid.Row="4" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <TextBox x:Name="FertilizeDaysTextBox"
+                     Grid.Row="4" Grid.Column="1"
+                     Width="80"/>
+
+            <TextBlock Text="Last watered:"
+                       Grid.Row="5" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <DatePicker x:Name="LastWateredPicker"
+                        Grid.Row="5" Grid.Column="1"/>
+
+            <TextBlock Text="Last fertilized:"
+                       Grid.Row="6" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <DatePicker x:Name="LastFertilizedPicker"
+                        Grid.Row="6" Grid.Column="1"/>
+
+            <TextBlock Text="Image path:"
+                       Grid.Row="7" Grid.Column="0"
+                       Margin="0,4"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimary}"/>
+            <StackPanel Grid.Row="7"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Spacing="6">
+              <TextBox x:Name="ImagePathTextBox"
+                       Width="230"/>
+              <!-- BUTTON UNCHANGED -->
+              <Button x:Name="BrowseImageButton"
+                      Content="Browse"
+                      Background="{StaticResource AccentBlue}"
+                      Foreground="White"
+                      CornerRadius="6"/>
+            </StackPanel>
+          </Grid>
+
+          <StackPanel Orientation="Horizontal"
+                      Margin="0,5,0,0"
+                      Spacing="10">
+            <Border BorderBrush="#BBDEFB"
+                    BorderThickness="1"
+                    Background="White"
+                    Width="220"
+                    Height="180"
+                    CornerRadius="10">
+              <Image x:Name="PlantImage"
+                     Stretch="Uniform"/>
+            </Border>
+
+            <StackPanel>
+              <TextBlock Text="Upcoming care"
+                         Margin="0,0,0,2"
+                         FontWeight="SemiBold"
+                         Foreground="{StaticResource TextSecondary}"/>
+
+              <TextBlock x:Name="NextWaterLabel"
+                         Text="Next watering: -"
+                         Margin="0,4"
+                         FontWeight="SemiBold"
+                         Foreground="{StaticResource TextPrimary}"/>
+              <TextBlock x:Name="NextFertilizeLabel"
+                         Text="Next fertilizing: -"
+                         Margin="0,4"
+                         FontWeight="SemiBold"
+                         Foreground="{StaticResource TextPrimary}"/>
+            </StackPanel>
+          </StackPanel>
+
+          <TextBlock Text="Growth log"
+                     FontSize="16"
+                     FontWeight="Bold"
+                     Margin="0,15,0,5"
+                     Foreground="{StaticResource TextPrimary}"/>
+          <TextBlock Text="Track notes about growth, issues, and changes."
+                     FontSize="12"
+                     Foreground="{StaticResource TextSecondary}"
+                     Margin="0,0,0,6"/>
+
+          <ListBox x:Name="LogListBox"
+                   Height="150"
+                   Background="#FAFAFA"
+                   BorderThickness="0"
+                   Foreground="{StaticResource TextPrimary}"/>
+
+          <StackPanel Orientation="Horizontal"
+                      Margin="0,5,0,0"
+                      Spacing="5">
+            <TextBox x:Name="LogNoteTextBox"
+                     Width="300"
+                     Watermark="Add note..."
+                     Foreground="Black"/>
+            <!-- BUTTON UNCHANGED -->
+            <Button x:Name="AddLogButton"
+                    Content="Add log"
+                    Background="{StaticResource AccentGreen}"
+                    Foreground="White"
+                    CornerRadius="6"/>
+          </StackPanel>
+
+          <TextBlock x:Name="StatusLabel"
+                     Text="Ready"
+                     Margin="0,15,0,0"
+                     Foreground="{StaticResource TextMuted}"
+                     FontStyle="Italic"/>
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+
+    <!-- Right: Calendar + tasks -->
+    <Border Grid.Column="2"
+            Background="{StaticResource CardBackground}"
+            CornerRadius="10"
+            BorderBrush="#C5E1A5"
+            BorderThickness="1"
+            Padding="10">
+      <StackPanel>
+        <TextBlock Text="Care Calendar"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource TextPrimary}"
+                   Margin="0,0,0,4"/>
+
+        <TextBlock Text="Choose a date to see watering and fertilizing tasks."
+                   FontSize="12"
+                   Foreground="{StaticResource TextSecondary}"
+                   Margin="0,0,0,10"/>
+
+        <CalendarDatePicker x:Name="TaskDatePicker"
+                            Margin="0,0,0,10"/>
+
+        <TextBlock Text="Tasks on selected date:"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Margin="0,10,0,5"
+                   Foreground="{StaticResource TextPrimary}"/>
+
+        <ListBox x:Name="TaskListBox"
+                 Height="400"
+                 Background="#FAFAFA"
+                 BorderThickness="0"
+                 Foreground="{StaticResource TextPrimary}"/>
+
+        <!-- BUTTON UNCHANGED -->
+        <Button x:Name="ExportCsvButton"
+                Content="Export plants to CSV"
+                Margin="0,10,0,0"
+                Background="#1565C0"
+                Foreground="White"
+                CornerRadius="6"
+                HorizontalAlignment="Left"
+                Width="180"/>
+
+      </StackPanel>
+    </Border>
+
+  </Grid>
+</Window>
